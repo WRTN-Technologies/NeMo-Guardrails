@@ -12,4 +12,3 @@ starlette==0.26.1
 uvicorn==0.21.1
 httpx==0.23.3
 simpleeval==0.9.13
-promptlayer~=0.1.82
