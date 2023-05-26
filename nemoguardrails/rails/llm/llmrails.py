@@ -18,9 +18,8 @@ import asyncio
 import logging
 import os
 from typing import List, Optional
-
 from langchain.llms import BaseLLM, OpenAI
-
+from promptlayer.langchain.llms import OpenAI as OpenAIWithPromptLayer
 from nemoguardrails.actions.llm.generation import LLMGenerationActions
 from nemoguardrails.actions.llm.utils import get_colang_history
 from nemoguardrails.flows.runtime import Runtime
@@ -84,6 +83,8 @@ class LLMRails:
 
         if main_llm_config.engine == "openai":
             self.llm = OpenAI(model_name=main_llm_config.model, temperature=0.1)
+        elif main_llm_config.engine == "openai_with_promptlayer":
+            self.llm = OpenAIWithPromptLayer(model_name=main_llm_config.model, temperature=0.1)
         else:
             raise Exception(f"Unknown LLM engine: {main_llm_config.engine}")
 
